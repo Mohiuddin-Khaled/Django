@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- For loop -->
+    <h1>context element</h1>
+    {% for i in data %}
+    <h3>{{i.name}} {{i.age}}</h3>
+    {% endfor %}
+
+    <h1>{{ lst | join:" - " }}</h1>
+    <h1>{{ lt | join:"//" }}</h1>
+    <h1>{{ birthday | date}}</h1>
+    <h1>{{ birthday | date:"D d M Y"}}</h1>
+    <h1>{{ lst | length }}</h1>
+    <h1>{{'Happy coding. Python is fun.' | truncatewords:2}}</h1>
+    <h1>{{"Python-is-Fun" | cut:" "}}</h1>
+    {% comment %} <h1>{{value | default: "This is a empty"}}</h1> {% endcomment %}
+    <h1>{{value|add:"2"}}</h1> 
+    <h1>{{'christmas' | capfirst}}</h1>  
+    <h1>{{ data | dictsort:"age" }}</h1>
+    <h1>{{'happy coding!' | upper}}</h1>
+    <h1>{{ value | first}}</h1>
+    <h1>{{ value | last}}</h1>
+    <h1>{{ value | length}}</h1>
+    <h1>{{ value | random}}</h1>
+    <h1>{{ value | slice:"2"}}</h1>
+    <h1>{{ birthday | time:"H\h i\m"}}</h1>
+    <h1>{{'Cloud computing' | truncatechars:5}}</h1>
+    <h1>{{birthday | timesince}}</h1>
+    <h1>{{'Happy coding' | wordcount}}</h1>
+    <h1><b>I</b> <button>love</button> <span>dogs</span></h1>
+    <h1>{{'Earthly' | make_list}}</h1>
+    <h1>{{ value | addslashes }}</h1>
+    {% comment %} <h1>{{ value | add:"2" }}</h1> {% endcomment %}
+    <h1>{{value | capfirst}}</h1>
+    <h1>{{"Jai is a slug" | slugify}}</h1>
+    <h1>{{"Jai is a slug" | title}}</h1>
+    <h1>{{ var|unordered_list }}</h1>  
+</html> 
