@@ -1,0 +1,20 @@
+<!-- meal/templates/meal/index.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Show Food</h1>
+    <div class="row">
+        {% for category in categories %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ category.strCategoryThumb }}" class="card-img-top" alt="{{ category.strCategory }}">
+                    <div class="card-body">
+                        <h1 class="card-title">{{ category.idCategory}}</h1>
+                        <h5 class="card-title">{{ category.strCategory }}</h5>
+                        <p class="card-text">{{ category.strCategoryDescription|truncatewords:10 }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
