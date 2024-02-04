@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Student Information</h2>
+    <ul>
+        <div>
+            <p>Roll Number: {{ std.roll }}</p>
+            <p>Name: {{ std.name }}</p>
+            <p>Email: {{ std.email }}</p>
+            <p>Father Name: {{ std.father_name }}</p>
+            <p>Mother Name: {{ std.mother_name }}</p>
+            <p>Address: {{ std.address }}</p>
+            <p>Date & Time: {{ std.date }}</p>
+            <p>Voucher: {{ std.payment_slip }}</p>
+            <p>Gadget name : {{ std.gadget_name }}</p>
+            <p>IP Address: {{ std.ip_address }}</p>
+            <p>Correct: {{ std.correct_info }}</p>
+        </div>
+    </ul>
+{% endblock %}

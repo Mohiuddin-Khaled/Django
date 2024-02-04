@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if data %}
+        {% for st in data %}
+            <h1>{{st.name}}</h1>
+            <h1>{{st.roll}}</h1>
+            <h1>{{st.address}}</h1>
+        {% endfor %}
+    {% else %}
+    <h1>No data show available</h1>
+    {% endif %}
+</body>
+</html>

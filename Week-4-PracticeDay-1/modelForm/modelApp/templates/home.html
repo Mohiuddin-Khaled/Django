@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    {% load crispy_forms_tags %}
+    <h1>Home page</h1>
+    <div style = "width:50%; margin:auto">
+        <form action="" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form | crispy }}
+            {% comment %} <button class = "btn btn-primary" type = "submit"></button>
+             {% endcomment %}
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+    </div>
+
+{% endblock content %}
