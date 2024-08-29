@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<!-- parent text -->
+{{block.super}}
+
+<!-- child text -->
+<!-- table section -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">User Id</th>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in data %}
+    <tr>
+      <th scope="row">{{i.userId}}</th>
+      <td>{{i.id}}</td>
+      <td>{{i.title}}</td>
+      <!-- <td>{{i.body}}</td>-->
+      <td>{{i.body | truncatewords:9}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h1>Inside in app!</h1>
+<img src="{% static 'images/bird2.jpeg' %}" alt="bird image 2" style='width: 300px; height:300px;'>
+{% endblock %}
