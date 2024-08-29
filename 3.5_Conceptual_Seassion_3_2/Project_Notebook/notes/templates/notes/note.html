@@ -1,0 +1,28 @@
+{% extends "notes/base.html" %}
+
+{% block page_header %}
+    <h1>{{note.title}}</h1>
+{% endblock page_header %}
+
+{% block content %}
+    <p>
+        <a href="#">Add New Entry</a>
+    </p>
+    <!-- particular note entries -->
+    <ul>
+        {% for entry in entries %}
+            <div class="card mb-3">
+                <h4 class="card-header">
+                    <a href="#">Update Entry</a>
+                </h4>
+                <!-- note entry -->
+                <div class="card-body">
+                    {{entry|linebreaks}}
+                </div>
+            </div>  
+        
+            {% empty %}
+                <h3>No note here!</h3>
+        {% endfor %}
+    </ul>
+{% endblock content %}

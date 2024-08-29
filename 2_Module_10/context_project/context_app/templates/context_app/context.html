@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>This is context page!</h1>
+    <h2>Author Name: {{author}}</h2>
+    <h2>Age : {{age}}</h2>
+    <h2>{{lst}}</h2>
+
+    <!-- conditional statement -->
+    {% if age >= 20 %}
+        <h4>You will get a driving license</h4>
+    {% elif age >= 10 and age < 20 %} 
+        <h4>You will not get a driving license</h4>
+    {% else %}
+        <h4>You are a child</h4>
+    {% endif %}
+
+    <!-- for loop -->
+    {% for i in courses %}
+        <h3>{{i.id}} {{i.name}} {{i.fee}}</h3>
+    {% endfor %}
+
+    <!-- template filtering -->
+    <!-- list -->
+    <p>{{lst}}</p>
+    <!-- join operation -->
+    <h5>{{lst | join:" - "}}</h5>
+    <!-- datatime: day month year -->
+    <!--<h5>{{birthday | date:"D d M Y"}}</h5>-->
+    <h5>{{birthday | date}}</h5>
+    <!-- empty value print -->
+    <h5>{{val | default:"an empty value"}}</h5>
+    <!-- remove space in string -->
+    <h5>{{"Python is Fun" | cut:" "}}</h5>
+    <!-- print object, value length-->
+    <h5>{{val | length}}</h5>
+    <!-- cut the string character-->
+    <h5>{{"Happy coading. Python is fun." | truncatechars:6}}</h5>
+    <!-- cut the string word -->
+    <h5>{{"Happy coading. Python is fun." | truncatewords:2}}</h5>
+</body>                 
+</html>
