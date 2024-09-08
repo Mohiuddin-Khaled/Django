@@ -14,11 +14,8 @@ class StudentForm(forms.ModelForm):
         }
         widgets = {
             "address": forms.Textarea(attrs={"rows": 3, "cols": 5}),
-            "date": forms.DateTimeInput(attrs={"type": "date-time-local"}),
+            "date": forms.DateInput(),
             "ip_address": forms.widgets.TextInput(),
-        }
-        help_text = {
-            "name": "write your full name",
         }
         error_message = {
             "name": {"required": "name is required"},
