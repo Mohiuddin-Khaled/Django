@@ -1,6 +1,22 @@
 {% extends "base.html" %}
+
 {% block content %}
-<h3>Food Name: {{name}}</h3>
-<h3 style="color: red;">Email: {{email}}</h3>
-<h3 style="color: green;">Rating: {{select}}</h3>
+<div class="container">
+    {% if form %}
+        <div>
+            <p>Name: {{form.name}}</p>
+            <p>Age: {{form.age}}</p>
+            <p>Email: {{form.email_address}}</p>
+            <p>Color: {{form.favorite_color}}</p>
+            <p>Check: {{form.agree}}</p>
+        </div>
+    {% else %}
+    <div class="container">
+        <h1>Html form value!</h1>
+        <h3>Food Name: {{name}}</h3>
+        <h3 style="color: red;">Email: {{email}}</h3>
+        <h3 style="color: green;">Rating: {{select}}</h3>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

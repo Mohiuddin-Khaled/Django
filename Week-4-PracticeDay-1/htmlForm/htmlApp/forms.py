@@ -9,10 +9,11 @@ color_choice = [
     ("black", "Black"),
 ]
 
+
 # django form Api
 class contactForm(forms.Form):
     name = forms.CharField(
-        label="User Name", help_text="Type your name", required=False
+        label="Full Name", help_text="Type your name", required=False
     )
     # comment = forms.CharField(widget=forms.Textarea)
     # email = forms.EmailField(label="User Email")
@@ -35,7 +36,7 @@ class contactForm(forms.Form):
         validators=[
             validators.FileExtensionValidator(
                 allowed_extensions=["pdf", "txt"],
-                message="file extension must be ended with .pdf",
+                message="file extension must be ended with .txt .pdf",
             )
         ]
     )

@@ -15,9 +15,7 @@ def home(request):
         email = request.POST.get("email")
         select = request.POST.get("select")
         return render(
-            request,
-            "home.html",
-            {"name": name, "email": email, "select": select},
+            request, "home.html", {"name": name, "email": email, "select": select}
         )
     else:
         return render(request, "base.html")
@@ -26,11 +24,11 @@ def home(request):
 # django form ---> form Api
 def formApi(request):
     if request.method == "POST":
-        print(request.POST)
+        # print(request.POST)
         form = contactForm(request.POST, request.FILES)
         if form.is_valid():
-            print(form.cleaned_data)
-
+            # print(form.cleaned_data)
+            return render(request, "home.html", {"form": form})
     else:
         form = contactForm()
     return render(request, "formApi.html", {"form": form})
