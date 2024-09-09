@@ -1,0 +1,15 @@
+{% extends 'base.html '%}
+{% block title %}task{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Task Form</h2>
+    <form method="post" style="width: 50%; margin:auto;" class="pt-3">
+        {% csrf_token %}
+        {{task_data|crispy}}
+        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    </form>
+</div>
+{%endblock%}
