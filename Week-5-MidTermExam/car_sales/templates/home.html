@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="m-2">
+    <h3 class="">Welcome to CarMart - Your Trusted Car Marketplace</h3>
+</div>
+<div class="d-flex flex-wrap m-3 p-3">
+    <div class="col-6 text-center my-5">
+        <p>At CarMart, we make buying and selling cars simple, transparent, and hassle-free. Whether you are looking for
+            a new ride, a pre-owned vehicle, or want to sell your current car, our platform connects you with a wide
+            range of options to meet your needs. Explore top brands, compare models, and enjoy a seamless e-commerce
+            experience tailored just for car enthusiasts.</p>
+    </div>
+    <div class="col-6 text-center">
+        <img style="width: 80%;  border-radius: 5px;" src="{% static 'car_home.png' %}" alt="car image" />
+    </div>
+</div>
+
+<div class="m-3 p-2">
+    <a href="{% url 'home_page' %}" class="card-text btn btn-outline-primary m-1">All</a>
+    {% for brand in brand_data %}
+    <a href="{% url 'category_wise_post' brand.slug %}" class="card-text btn btn-outline-primary m-1">{{brand}}</a>
+    {% endfor %}
+</div>
+
+<div class="m-3 p-2">
+    <h3 class="my-3">Total Car Found: {{car_data | length}}</h3>
+    <div class="row">
+        {% for car in car_data %}
+        <div class="col-md-3">
+            <div class="card mb-4 text-center">
+                {% if car.car_image %}
+                <img class="card-img-top" src="{{ car.car_image.url }}" alt="{{ car.car_name }}">
+                {% else %}
+                <p>No Image!</p>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">Car Name: {{ car.car_name }}</h5>
+                    <p class="card-text"><strong>Price: </strong>${{ car.car_price }}</p>
+                    <p class="card-text"><strong>Brand: </strong><span
+                            class="btn btn-success btn-sm">{{car.car_brand.brand}}</span>
+                    </p>
+                    <a href="{% url 'car_comments' car.id %}" class="text-decoration-none"><strong>View
+                            Details</strong></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

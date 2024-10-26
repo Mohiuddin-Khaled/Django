@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="m-2 p-2">
+    <h3>Hi, {{request.user}}</h3>
+    <a class="btn btn-outline-primary" href="{% url 'edit_profile' %}">Edit Profile</a>
+</div>
+<div class="m-3 p-2">
+    <h3>List of Buying Cars: {{car_data | length }}</h3>
+    <div class="row p-2">
+        {% for car in car_data %}
+        <div class="col-md-3">
+            <div class="card mb-4 text-center">
+                {% if car.car_image %}
+                <img class="card-img-top" src="{{ car.car_image.url }}" alt="{{ car.car_name }}">
+                {% else %}
+                <p>No Image!</p>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">Car Name: {{ car.car_name }}</h5>
+                    <p class="card-text"><strong>Price:</strong> ${{ car.car_price }}</p>
+                    <p>{{request.user}}</p>
+                    <p class="card-text">Brand: <strong class="btn btn-success btn-sm">{{car.car_brand.brand}}</strong>
+                    </p>
+                    <a href="{% url 'car_comments' car.id %}" class="text-decoration-none"><strong>View
+                            Details</strong></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
