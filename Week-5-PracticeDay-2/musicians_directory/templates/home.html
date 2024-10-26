@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <table class="table my-2">
+        <thead>
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Musician Name</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Instrument Type</th>
+                <th class="text-center">Album Name</th>
+                <th class="text-center">Album Rating</th>
+                <th class="text-center">Release Date</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in object %}
+            <tr>
+                <td class="text-center">{{item.id}}</td>
+                <td class="text-center"><a class="text-center" href="{% url 'edit_musician' item.musician_name.id %}"
+                        style="text-decoration: none;">{{item.musician_name.first_name}}
+                        {{item.musician_name.last_name}}</a></td>
+                <td class="text-center">{{item.musician_name.email}}</td>
+                <td class="text-center">{{item.musician_name.instrument}}</td>
+                <td class="text-center">{{item.album_name}}</td>
+                <td class="text-center">{{item.rating}}</td>
+                <td class="text-center">{{item.release_date}}</td>
+                <td>
+                    <a class="text-center btn btn-secondary btn-sm" href="{% url 'edit_album' item.id %}"
+                        style="text-decoration: none;">Edit</a>
+                    <a class="text-center btn btn-danger btn-sm"
+                        href="{% url 'delete_musician' item.musician_name.id %}"
+                        style="text-decoration: none;">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

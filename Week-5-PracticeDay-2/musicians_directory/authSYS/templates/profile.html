@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container m-5 text-center">
+    <h1>Hi, {{data.username}}</h1>
+    <h3>Create an Musician Album:
+        <span><a class="btn btn-outline-primary btn-lg" href="{% url 'music_url' %}">Musician Info</a>
+            <a class="btn btn-outline-primary btn-lg" href="{% url 'album_url' %}">Album Info</a></span>
+    </h3>
+
+</div>
+{% endblock %}
