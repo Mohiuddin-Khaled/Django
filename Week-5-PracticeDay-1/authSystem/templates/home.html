@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="p-3">
+    {% if messages %}
+    {% for m in messages %}
+    <a href="{% url 'user_login' %}" class="text-success" style="text-decoration: none;">{{m}} -> Go to Login Page</a>
+    {% endfor %}
+    {% endif %}
+    <br>
+    <h3>Home Page</h3>
+</div>
+{% endblock %}

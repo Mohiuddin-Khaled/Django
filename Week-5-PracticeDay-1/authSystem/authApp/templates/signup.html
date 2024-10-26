@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="p-3">
+    {% if messages %}
+    {% for m in messages %}
+    <p class="text-success">{{m}}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+<div class="container p-3">
+    <h3>Register Page</h3>
+    <form action="" method="post" style="width: 50%; margin: auto;" class="p-2" novalidate>
+        {% csrf_token %}
+        <!--{{form|crispy}}-->
+        {% for fm in form %}
+        <div class="">
+            {{fm.label_tag}}
+            {{fm}}
+            {{fm.errors|striptags}}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary my-2">Submit</button>
+    </form>
+</div>
+{% endblock %}
