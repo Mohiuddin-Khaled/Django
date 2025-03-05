@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}Book Borrow{% endblock %}
+{% block content %}
+
+<!--home page-->
+<div class="container mx-auto flex flex-col md:flex-row items-center my-8 md:my-8">
+    <div
+        class="flex flex-col w-full lg:w-1/2 justify-center items-start pt-12 pb-24 px-6 bg-white rounded-2xl bg-opacity-70 mx-3">
+        <h1 class="font-bold text-3xl my-4">Welcome To Library Management System</h1>
+        <p class="leading-normal mb-4">The Library Management System is a web-based platform designed to help users
+            manage and interact with a library efficiently. This system enables users to browse books, check book
+            details, and leave reviews. It also helps administrators manage the library's inventory, track borrowed
+            books, and handle user requests.</p>
+        {% if not request.user.is_authenticated %}
+        <div class="flex justify-end w-full">
+            <a href="{% url 'user_register' %}"
+                class="bg-blue-900 text-white rounded hover:bg-white hover:text-blue-900 hover:border-blue-900 shadow hover:shadow-lg py-2 px-4 border border-gray-900 hover:border-transparent">Register</a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="w-full lg:w-1/2 lg:py-4 text-center">
+        <img class="rounded-xl" src="{% static 'img/library_image.jpg' %}" alt="book image">
+    </div>
+</div>
+<!--Categories section-->
+<div class="container mx-auto flex flex-col md:flex-row items-center my-6 md:my-6 space-y-3 md:space-y-0 md:space-x-4">
+    <a href="{% url 'home_page' %}"
+        class="bg-blue-600 text-white rounded hover:bg-white hover:text-blue-600 hover:border-blue-600 shadow hover:shadow-lg py-2 px-4 border border-gray-900 hover:border-transparent">All</a>
+    {% for category in category_data %}
+    <a href="{% url 'category_post' category.slug %}"
+        class="bg-blue-600 text-white rounded hover:bg-white hover:text-blue-600 hover:border-blue-600 shadow hover:shadow-lg py-2 px-4 border border-gray-900 hover:border-transparent">{{category}}</a>
+    {% endfor %}
+</div>
+
+<!--card section-->
+<div class="container mx-auto my-6 px-4">
+    <h3 class="font-bold text-3xl text-red-800 mb-6">
+        Available Books: {{ book_data | length }}
+    </h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {% for bok in book_data %}
+        <div
+            class="bg-white shadow-lg rounded-lg overflow-hidden p-4 flex flex-col items-center text-center transition-transform transform hover:scale-105">
+            {% if bok.image %}
+            <img class="w-56 h-56 rounded-lg mx-auto" src="{{ bok.image.url }}" alt="{{ bok.title }}">
+            {% else %}
+            <p class="text-gray-500 py-10">no image available!</p>
+            {% endif %}
+            <div class="mt-4">
+                <h5 class="text-xl font-bold text-gray-800">{{ bok.title }}</h5>
+                <p class="text-gray-700"><strong>Borrow Price:</strong> ${{ bok.borrow_price }}</p>
+
+                <p class="mt-2">
+                    <strong>Author:</strong>
+                    <span class="bg-green-600 text-white px-3 py-1 text-sm rounded-md">
+                        {{ bok.author.name }}
+                    </span>
+                </p>
+                <a href="{% url 'book_info' bok.id %}"
+                    class="mt-4 text-blue-600 font-semibold hover:text-blue-800 cursor-pointer ">
+                    View Details
+                </a>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
